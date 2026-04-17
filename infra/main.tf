@@ -40,8 +40,6 @@ resource "aws_s3_bucket_policy" "public_read" {
   bucket = aws_s3_bucket.web.id
 
   # ESTA ES LA SOLUCIÓN: Obliga a Terraform a esperar a que el paso 3 termine
-  depends_on = [aws_s3_bucket_public_access_block.web_public]
-
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{

@@ -1,15 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Johan CI/CD</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johan CI/CD - Yennyfer Gomez</title>
+    <style>
+        /* Estilos Base */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Degradado de fondo en tonos morados */
+            background: linear-gradient(135deg, #2e0249 0%, #570a57 50%, #a91079 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Contenedor Principal */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 80%;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Tipografía */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #f806cc, #a91079);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        /* Badge de Versión */
+        .version {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.5rem 1.5rem;
+            background: #f806cc;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(248, 6, 204, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .version:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<h1>🚀 Hola desde AWS + GitHub Actions + Yennyfer Gomez</h1>
-<p>Despliegue automático funcionando</p>
-<div class="version">Versión 2</div>
-</div>
+    <div class="container">
+        <h1>🚀 Hola desde AWS + GitHub Actions</h1>
+        <h3>Yennyfer Gomez</h3>
+        <p>Despliegue automático funcionando correctamente</p>
+        <div class="version">Versión 2.0</div>
+    </div>
 </body>
 </html>

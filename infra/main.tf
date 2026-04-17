@@ -4,14 +4,14 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket  = "bucket-johansuesucnstate-terraform" 
-    key     = "github-actions-demo-yennyfer/terraform.tfstate" 
+    bucket  = "bucket-johansuesucnstate-terraform"
+    key     = "github-actions-demo-yennyfer/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
   }
 }
 
-# 1. Creación del Bucket
+# 1. Creación del Bucket S3
 resource "aws_s3_bucket" "web" {
   bucket = "yennyfergomez-githubaccions-demo"
 }
@@ -24,8 +24,8 @@ resource "aws_s3_bucket_website_configuration" "web_config" {
   }
 }
 
-# 3. DESACTIVAR el Bloqueo de Acceso Público
-# Este paso es indispensable antes de aplicar la política
+# 3. Desactivar el Bloqueo de Acceso Público
+# Este recurso DEBE terminar de crearse antes que la política
 resource "aws_s3_bucket_public_access_block" "web_public" {
   bucket = aws_s3_bucket.web.id
 
@@ -39,7 +39,7 @@ resource "aws_s3_bucket_public_access_block" "web_public" {
 resource "aws_s3_bucket_policy" "public_read" {
   bucket = aws_s3_bucket.web.id
 
-  # IMPORTANTE: Espera a que el bloqueo se desactive antes de aplicar la política
+  # ESTA ES LA SOLUCIÓN: Obliga a Terraform a esperar a que el paso 3 termine
   depends_on = [aws_s3_bucket_public_access_block.web_public]
 
   policy = jsonencode({
@@ -54,7 +54,7 @@ resource "aws_s3_bucket_policy" "public_read" {
   })
 }
 
-# Salidas (Outputs)
+# Salidas de información (Outputs)
 output "bucket_name" {
   value = aws_s3_bucket.web.bucket
 }

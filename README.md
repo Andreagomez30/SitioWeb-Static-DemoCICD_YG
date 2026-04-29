@@ -34,7 +34,7 @@ Este proyecto implementa una infraestructura automatizada para el despliegue de 
 El repositorio sigue una estructura organizada de ramas:
 
 - `main`: Rama de producción. Contiene el código estable y lo que está desplegado actualmente.
-- `develop`: Rama de integración para nuevas funcionalidades y pruebas antes de pasar a producción.
+
 
 ## ⚙️ Configuración y Uso
 
